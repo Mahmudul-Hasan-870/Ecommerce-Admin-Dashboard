@@ -28,51 +28,51 @@
         <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">General Settings</h3>
         <form @submit.prevent="updateSettings" class="space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
+            <div>
               <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Site Name</label>
-            <input
-              v-model="settings.siteName"
-              type="text"
-              class="input-field mt-1"
-            />
-          </div>
-          
-          <div>
+              <input
+                v-model="settings.siteName"
+                type="text"
+                class="input-field mt-1"
+              />
+            </div>
+            
+            <div>
               <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Currency</label>
-            <select v-model="settings.currency" class="input-field mt-1">
-              <option value="USD">USD ($) - US Dollar</option>
-              <option value="EUR">EUR (€) - Euro</option>
-              <option value="GBP">GBP (£) - British Pound</option>
-              <option value="BDT">BDT (৳) - Bangladeshi Taka</option>
-              <option value="INR">INR (₹) - Indian Rupee</option>
-              <option value="JPY">JPY (¥) - Japanese Yen</option>
-              <option value="CAD">CAD (C$) - Canadian Dollar</option>
-              <option value="AUD">AUD (A$) - Australian Dollar</option>
-              <option value="CHF">CHF (CHF) - Swiss Franc</option>
-              <option value="CNY">CNY (¥) - Chinese Yuan</option>
-              <option value="KRW">KRW (₩) - South Korean Won</option>
-              <option value="SGD">SGD (S$) - Singapore Dollar</option>
-              <option value="HKD">HKD (HK$) - Hong Kong Dollar</option>
-              <option value="NZD">NZD (NZ$) - New Zealand Dollar</option>
-              <option value="SEK">SEK (kr) - Swedish Krona</option>
-              <option value="NOK">NOK (kr) - Norwegian Krone</option>
-              <option value="DKK">DKK (kr) - Danish Krone</option>
-              <option value="PLN">PLN (zł) - Polish Złoty</option>
-              <option value="CZK">CZK (Kč) - Czech Koruna</option>
-              <option value="HUF">HUF (Ft) - Hungarian Forint</option>
-              <option value="RUB">RUB (₽) - Russian Ruble</option>
-              <option value="TRY">TRY (₺) - Turkish Lira</option>
-              <option value="BRL">BRL (R$) - Brazilian Real</option>
-              <option value="MXN">MXN ($) - Mexican Peso</option>
-              <option value="ZAR">ZAR (R) - South African Rand</option>
-              <option value="AED">AED (د.إ) - UAE Dirham</option>
-              <option value="SAR">SAR (ر.س) - Saudi Riyal</option>
-              <option value="THB">THB (฿) - Thai Baht</option>
-              <option value="MYR">MYR (RM) - Malaysian Ringgit</option>
-              <option value="IDR">IDR (Rp) - Indonesian Rupiah</option>
-              <option value="PHP">PHP (₱) - Philippine Peso</option>
-              <option value="VND">VND (₫) - Vietnamese Dong</option>
-            </select>
+              <select v-model="settings.currency" class="input-field mt-1">
+                <option value="USD">USD ($) - US Dollar</option>
+                <option value="EUR">EUR (€) - Euro</option>
+                <option value="GBP">GBP (£) - British Pound</option>
+                <option value="BDT">BDT (৳) - Bangladeshi Taka</option>
+                <option value="INR">INR (₹) - Indian Rupee</option>
+                <option value="JPY">JPY (¥) - Japanese Yen</option>
+                <option value="CAD">CAD (C$) - Canadian Dollar</option>
+                <option value="AUD">AUD (A$) - Australian Dollar</option>
+                <option value="CHF">CHF (CHF) - Swiss Franc</option>
+                <option value="CNY">CNY (¥) - Chinese Yuan</option>
+                <option value="KRW">KRW (₩) - South Korean Won</option>
+                <option value="SGD">SGD (S$) - Singapore Dollar</option>
+                <option value="HKD">HKD (HK$) - Hong Kong Dollar</option>
+                <option value="NZD">NZ$ (NZ$) - New Zealand Dollar</option>
+                <option value="SEK">SEK (kr) - Swedish Krona</option>
+                <option value="NOK">NOK (kr) - Norwegian Krone</option>
+                <option value="DKK">DKK (kr) - Danish Krone</option>
+                <option value="PLN">PLN (zł) - Polish Złoty</option>
+                <option value="CZK">CZK (Kč) - Czech Koruna</option>
+                <option value="HUF">HUF (Ft) - Hungarian Forint</option>
+                <option value="RUB">RUB (₽) - Russian Ruble</option>
+                <option value="TRY">TRY (₺) - Turkish Lira</option>
+                <option value="BRL">BRL (R$) - Brazilian Real</option>
+                <option value="MXN">MXN ($) - Mexican Peso</option>
+                <option value="ZAR">ZAR (R) - South African Rand</option>
+                <option value="AED">AED (د.إ) - UAE Dirham</option>
+                <option value="SAR">SAR (ر.س) - Saudi Riyal</option>
+                <option value="THB">THB (฿) - Thai Baht</option>
+                <option value="MYR">MYR (RM) - Malaysian Ringgit</option>
+                <option value="IDR">IDR (Rp) - Indonesian Rupiah</option>
+                <option value="PHP">PHP (₱) - Philippine Peso</option>
+                <option value="VND">VND (₫) - Vietnamese Dong</option>
+              </select>
             </div>
           </div>
           
@@ -88,158 +88,38 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Timezone</label>
-            <select v-model="settings.timezone" class="input-field mt-1">
-              <option value="UTC">UTC</option>
-              <option value="EST">Eastern Time</option>
-              <option value="PST">Pacific Time</option>
-            </select>
-          </div>
-          
-          <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date Format</label>
-            <select v-model="settings.dateFormat" class="input-field mt-1">
-              <option value="MM/DD/YYYY">MM/DD/YYYY</option>
-              <option value="DD/MM/YYYY">DD/MM/YYYY</option>
-              <option value="YYYY-MM-DD">YYYY-MM-DD</option>
-            </select>
-          </div>
-          
-          <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Time Format</label>
-            <select v-model="settings.timeFormat" class="input-field mt-1">
-              <option value="12h">12-hour</option>
-              <option value="24h">24-hour</option>
-            </select>
-            </div>
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Items Per Page</label>
-            <input
-              v-model.number="settings.itemsPerPage"
-              type="number"
-              min="5"
-              max="100"
-              class="input-field mt-1"
-            />
-          </div>
-          
-          <button type="submit" class="btn-primary">
-            Update General Settings
-          </button>
-        </form>
-      </div>
-
-
-    </div>
-
-    <!-- Theme and Notification Settings -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <!-- Theme Settings -->
-      <div class="card">
-        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Theme Settings</h3>
-        <form @submit.prevent="updateSettings" class="space-y-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Primary Color</label>
-              <input
-                v-model="settings.theme.primaryColor"
-                type="color"
-                class="input-field mt-1 h-10"
-              />
+              <select v-model="settings.timezone" class="input-field mt-1">
+                <option value="UTC">UTC</option>
+                <option value="EST">Eastern Time</option>
+                <option value="PST">Pacific Time</option>
+              </select>
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Secondary Color</label>
-              <input
-                v-model="settings.theme.secondaryColor"
-                type="color"
-                class="input-field mt-1 h-10"
-              />
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date Format</label>
+              <select v-model="settings.dateFormat" class="input-field mt-1">
+                <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+              </select>
             </div>
-          </div>
-          
-          <div class="flex items-center justify-between">
+            
             <div>
-              <p class="text-sm font-medium text-gray-900 dark:text-white">Dark Mode</p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Enable dark theme</p>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Time Format</label>
+              <select v-model="settings.timeFormat" class="input-field mt-1">
+                <option value="12h">12 Hour</option>
+                <option value="24h">24 Hour</option>
+              </select>
             </div>
-            <button
-              @click="settings.theme.darkMode = !settings.theme.darkMode"
-              :class="[
-                'relative inline-flex h-6 w-11 items-center rounded-full transition-colors',
-                settings.theme.darkMode ? 'bg-primary-600' : 'bg-gray-200'
-              ]"
-            >
-              <span
-                :class="[
-                  'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
-                  settings.theme.darkMode ? 'translate-x-6' : 'translate-x-1'
-                ]"
-              />
-            </button>
-          </div>
-          
-          <button type="submit" class="btn-primary">
-            Update Theme Settings
-          </button>
-        </form>
-      </div>
-
-      <!-- Notification Settings -->
-      <div class="card">
-        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Notification Settings</h3>
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm font-medium text-gray-900 dark:text-white">Email Notifications</p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Receive email notifications for new orders</p>
-            </div>
-            <button
-              @click="settings.notifications.email = !settings.notifications.email"
-              :class="[
-                'relative inline-flex h-6 w-11 items-center rounded-full transition-colors',
-                settings.notifications.email ? 'bg-primary-600' : 'bg-gray-200'
-              ]"
-            >
-              <span
-                :class="[
-                  'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
-                  settings.notifications.email ? 'translate-x-6' : 'translate-x-1'
-                ]"
-              />
-            </button>
-          </div>
-          
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm font-medium text-gray-900 dark:text-white">Push Notifications</p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Receive push notifications for urgent updates</p>
-            </div>
-            <button
-              @click="settings.notifications.push = !settings.notifications.push"
-              :class="[
-                'relative inline-flex h-6 w-11 items-center rounded-full transition-colors',
-                settings.notifications.push ? 'bg-primary-600' : 'bg-gray-200'
-              ]"
-            >
-              <span
-                :class="[
-                  'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
-                  settings.notifications.push ? 'translate-x-6' : 'translate-x-1'
-                ]"
-              />
-            </button>
           </div>
           
           <button 
             @click="updateSettings"
             class="btn-primary mt-4"
           >
-            Update Notification Settings
+            Update Settings
           </button>
-        </div>
-        </div>
+        </form>
       </div>
 
       <!-- User Management -->
@@ -314,87 +194,41 @@
           </table>
         </div>
       </div>
-          </div>
+    </div>
+
+    <!-- User Modal -->
+    <div v-if="showCreateUserModal || showEditUserModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+      <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white dark:bg-gray-800">
+        <div class="mt-3">
+          <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">
+            {{ showEditUserModal ? 'Edit User' : 'Create New User' }}
+          </h3>
           
-    <!-- Create/Edit User Modal -->
-    <div v-if="showCreateUserModal || showEditUserModal" class="fixed inset-0 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
-      <div class="relative w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden" @click.stop>
-        <!-- Modal Header -->
-        <div class="bg-gradient-to-r from-primary-600 to-primary-700 px-8 py-6">
-          <div class="flex items-center justify-between">
+          <form @submit.prevent="saveUser" class="space-y-4">
             <div>
-              <h3 class="text-2xl font-bold text-white">
-                {{ showEditUserModal ? 'Edit User' : 'Create New User' }}
-              </h3>
-              <p class="text-primary-100 mt-1">
-                {{ showEditUserModal ? 'Update user information and permissions' : 'Create a new user with specific role and permissions' }}
-              </p>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+              <input v-model="newUser.name" type="text" class="input-field mt-1" required />
             </div>
-            <button
-              @click="closeUserModal"
-              class="text-white hover:text-primary-100 transition-colors duration-200 p-2 rounded-full hover:bg-white hover:bg-opacity-10"
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Modal Body -->
-        <div class="p-8">
-          <form @submit.prevent="saveUser" class="space-y-6">
-            <!-- Basic Information -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-                <input
-                  v-model="newUser.name"
-                  type="text"
-                  required
-                  class="input-field"
-                  placeholder="Enter full name"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                <input
-                  v-model="newUser.email"
-                  type="email"
-                  required
-                  class="input-field"
-                  placeholder="Enter email address"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
-                <input
-                  v-model="newUser.password"
-                  type="password"
-                  :required="!showEditUserModal"
-                  class="input-field"
-                  placeholder="Enter password"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone (Optional)</label>
-                <input
-                  v-model="newUser.phone"
-                  type="tel"
-                  class="input-field"
-                  placeholder="Enter phone number"
-                />
-              </div>
-            </div>
-
-            <!-- Role Selection -->
+            
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Role</label>
-              <select v-model="newUser.role" class="input-field" required>
-                <option value="">Select a role</option>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+              <input v-model="newUser.email" type="email" class="input-field mt-1" required />
+            </div>
+            
+            <div v-if="!showEditUserModal">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+              <input v-model="newUser.password" type="password" class="input-field mt-1" required />
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+              <input v-model="newUser.phone" type="tel" class="input-field mt-1" />
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Role</label>
+              <select v-model="newUser.role" class="input-field mt-1" required>
+                <option value="">Select Role</option>
                 <option value="admin">Administrator - Full access to all features</option>
                 <option value="manager">Manager - Manage products, orders, customers</option>
                 <option value="editor">Editor - Create and edit content</option>
@@ -427,7 +261,6 @@
                   <input v-model="newUser.permissions.categories" type="checkbox" class="mr-2" />
                   <label class="text-sm text-gray-700 dark:text-gray-300">Categories</label>
                 </div>
-
                 <div class="flex items-center">
                   <input v-model="newUser.permissions.settings" type="checkbox" class="mr-2" />
                   <label class="text-sm text-gray-700 dark:text-gray-300">Settings</label>
@@ -470,9 +303,9 @@
               </div>
               <button @click="newUser.isActive = !newUser.isActive" :class="['relative inline-flex h-6 w-11 items-center rounded-full transition-colors', newUser.isActive ? 'bg-primary-600' : 'bg-gray-200']">
                 <span :class="['inline-block h-4 w-4 transform rounded-full bg-white transition-transform', newUser.isActive ? 'translate-x-6' : 'translate-x-1']" />
-            </button>
-          </div>
-          
+              </button>
+            </div>
+            
             <!-- Modal Actions -->
             <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:border-gray-700">
               <button
@@ -488,9 +321,9 @@
                 :disabled="userLoading"
               >
                 {{ userLoading ? 'Saving...' : (showEditUserModal ? 'Update User' : 'Create User') }}
-          </button>
+              </button>
             </div>
-        </form>
+          </form>
         </div>
       </div>
     </div>

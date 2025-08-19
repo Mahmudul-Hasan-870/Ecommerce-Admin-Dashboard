@@ -1,8 +1,19 @@
 import axios from 'axios'
 
+// Determine base URL based on environment
+const getBaseURL = () => {
+  if (import.meta.env.PROD && !import.meta.env.DEV) {
+    // Production: Use direct API URL
+    return 'https://ecommerce-backend-api-server-production.up.railway.app/api'
+  } else {
+    // Development & Preview: Use proxy
+    return '/api'
+  }
+}
+
 // Create axios instance
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: getBaseURL(),
   timeout: 10000
 })
 
