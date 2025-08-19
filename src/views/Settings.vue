@@ -242,78 +242,76 @@
         </div>
       </div>
 
-    <!-- User Management Section -->
+      <!-- User Management -->
       <div class="card">
-      <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">User Management</h3>
-      <div class="space-y-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <p class="text-sm font-medium text-gray-900 dark:text-white">Create Additional Users</p>
-            <p class="text-sm text-gray-500 dark:text-gray-400">Add new users with different roles and permissions</p>
-          </div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-medium text-gray-900 dark:text-white">User Management</h3>
           <button 
             @click="showCreateUserModal = true"
             class="btn-primary"
           >
-            Create New User
+            Add User
           </button>
-          </div>
-          
-        <!-- User List -->
-        <div v-if="users.length > 0" class="mt-6">
-          <h4 class="text-md font-medium text-gray-900 dark:text-white mb-3">Existing Users</h4>
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-              <thead class="bg-gray-50 dark:bg-gray-800">
-                <tr>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Email</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Role</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
-                <tr v-for="user in users" :key="user._id">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ user.name }}</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ user.email }}</td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span :class="[
-                      'inline-flex px-2 py-1 text-xs font-semibold rounded-full',
-                      {
-                        'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200': user.role === 'admin',
-                        'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200': user.role === 'manager',
-                        'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200': user.role === 'editor',
-                        'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200': user.role === 'viewer',
-                        'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200': user.role === 'staff'
-                      }
-                    ]">
-                      {{ user.role }}
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span :class="[
-                      'inline-flex px-2 py-1 text-xs font-semibold rounded-full',
-                      {
-                        'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200': user.isActive,
-                        'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200': !user.isActive
-                      }
-                    ]">
-                      {{ user.isActive ? 'Active' : 'Inactive' }}
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button @click="editUser(user)" class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300 mr-3">
-                      Edit
-                    </button>
-                    <button @click="deleteUser(user._id)" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        </div>
+        
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">User</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Role</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+              <tr v-for="user in users" :key="user._id">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <Avatar :name="user.name" size="sm" />
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">{{ user.name }}</div>
+                      <div class="text-sm text-gray-500 dark:text-gray-400">{{ user.email }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" :class="{
+                    'bg-red-100 text-red-800': user.role === 'admin',
+                    'bg-blue-100 text-blue-800': user.role === 'manager',
+                    'bg-green-100 text-green-800': user.role === 'editor',
+                    'bg-gray-100 text-gray-800': user.role === 'viewer'
+                  }">
+                    {{ user.role }}
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" :class="{
+                    'bg-green-100 text-green-800': user.isActive,
+                    'bg-red-100 text-red-800': !user.isActive
+                  }">
+                    {{ user.isActive ? 'Active' : 'Inactive' }}
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <button 
+                    @click="editUser(user)"
+                    class="text-primary-600 hover:text-primary-900 dark:text-primary-400 dark:hover:text-primary-300 mr-3"
+                  >
+                    Edit
+                  </button>
+                  <button 
+                    @click="deleteUser(user._id)"
+                    class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
           </div>
@@ -508,6 +506,8 @@ import { showUpdateSuccess, showActionFailed } from '../utils/toast'
 import { showResetConfirm } from '../utils/confirm'
 import LoadingSpinner from '../components/ui/LoadingSpinner.vue'
 import { initializeTheme, updateTheme } from '../utils/theme'
+import api from '../utils/axios'
+import Avatar from '../components/ui/Avatar.vue'
 
 const authStore = useAuthStore()
 const settingsStore = useSettingsStore()
@@ -613,17 +613,10 @@ const resetSettings = async () => {
 // User Management Functions
 const fetchUsers = async () => {
   try {
-    const response = await fetch('http://localhost:5001/api/users', {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-    if (response.ok) {
-      const data = await response.json()
-      users.value = data
-    }
+    const response = await api.get('/users')
+    users.value = response.data
   } catch (error) {
-    
+    console.error('Failed to fetch users:', error)
   } finally {
     loading.value = false
   }
@@ -632,31 +625,18 @@ const fetchUsers = async () => {
 const saveUser = async () => {
   userLoading.value = true
   try {
-    const url = showEditUserModal.value 
-      ? `http://localhost:5001/api/users/${newUser.value._id}`
-      : 'http://localhost:5001/api/users'
-    
-    const method = showEditUserModal.value ? 'PUT' : 'POST'
-    
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(newUser.value)
-    })
-    
-    if (response.ok) {
-      showUpdateSuccess(showEditUserModal.value ? 'User updated' : 'User created')
-      closeUserModal()
-      await fetchUsers()
+    let response
+    if (showEditUserModal.value) {
+      response = await api.put(`/users/${newUser.value._id}`, newUser.value)
     } else {
-      const error = await response.json()
-      showActionFailed('Save user', error.message)
+      response = await api.post('/users', newUser.value)
     }
+    
+    showUpdateSuccess(showEditUserModal.value ? 'User updated' : 'User created')
+    closeUserModal()
+    await fetchUsers()
   } catch (error) {
-    showActionFailed('Save user', error.message)
+    showActionFailed('Save user', error.response?.data?.message || error.message)
   } finally {
     userLoading.value = false
   }
@@ -670,22 +650,11 @@ const editUser = (user) => {
 const deleteUser = async (userId) => {
   if (confirm('Are you sure you want to delete this user?')) {
     try {
-      const response = await fetch(`http://localhost:5001/api/users/${userId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-      
-      if (response.ok) {
-        showUpdateSuccess('User deleted')
-        await fetchUsers()
-      } else {
-        const error = await response.json()
-        showActionFailed('Delete user', error.message)
-      }
+      await api.delete(`/users/${userId}`)
+      showUpdateSuccess('User deleted')
+      await fetchUsers()
     } catch (error) {
-      showActionFailed('Delete user', error.message)
+      showActionFailed('Delete user', error.response?.data?.message || error.message)
     }
   }
 }

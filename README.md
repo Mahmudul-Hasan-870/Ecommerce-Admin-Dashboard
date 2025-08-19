@@ -192,7 +192,7 @@ client/
 3. **Environment Configuration**
    Create a `.env` file in the root directory:
    ```env
-   VITE_API_BASE_URL=http://localhost:8000/api
+   VITE_API_BASE_URL=https://ecommerce-backend-api-server-production.up.railway.app/api
    VITE_APP_NAME=E-commerce Admin
    VITE_APP_VERSION=1.0.0
    ```
@@ -205,7 +205,7 @@ client/
    ```
 
 5. **Open your browser**
-   Navigate to `http://localhost:5173`
+   Navigate to `http://localhost:3000`
 
 ## ⚙️ Configuration
 
@@ -222,7 +222,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: 'https://ecommerce-backend-api-server-production.up.railway.app',
         changeOrigin: true
       }
     }
