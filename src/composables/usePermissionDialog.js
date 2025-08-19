@@ -1,9 +1,11 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
 import { canAccess, getMissingPermissions, getPermissionMessage, hasPermission } from '../utils/permissions'
 
 export function usePermissionDialog() {
   const router = useRouter()
+  const authStore = useAuthStore()
   
   const showPermissionDialog = ref(false)
   const permissionDialogData = ref({
@@ -14,11 +16,15 @@ export function usePermissionDialog() {
 
   // Check permission and show dialog if needed
   const checkPermission = (feature, action = null) => {
-    if (canAccess(feature)) {
+    if (!authStore.user || !authStore.user.permissions) {
+      return false
+    }
+    
+    if (canAccess(feature, authStore.user)) {
       return true
     }
 
-    const missingPermissions = getMissingPermissions(feature)
+    const missingPermissions = getMissingPermissions(feature, authStore.user)
     const message = getPermissionMessage(feature)
     
     showPermissionDialog.value = true
@@ -33,7 +39,11 @@ export function usePermissionDialog() {
 
   // Check specific permission
   const checkSpecificPermission = (permission, action = null) => {
-    if (hasPermission(permission)) {
+    if (!authStore.user || !authStore.user.permissions) {
+      return false
+    }
+    
+    if (hasPermission(permission, authStore.user)) {
       return true
     }
 
@@ -49,13 +59,17 @@ export function usePermissionDialog() {
 
   // Check multiple permissions
   const checkPermissions = (permissions, action = null) => {
-    const hasAccess = permissions.every(permission => canAccess(permission))
+    if (!authStore.user || !authStore.user.permissions) {
+      return false
+    }
+    
+    const hasAccess = permissions.every(permission => canAccess(permission, authStore.user))
     
     if (hasAccess) {
       return true
     }
 
-    const missingPermissions = permissions.filter(permission => !canAccess(permission))
+    const missingPermissions = permissions.filter(permission => !canAccess(permission, authStore.user))
     
     showPermissionDialog.value = true
     permissionDialogData.value = {
@@ -69,6 +83,10 @@ export function usePermissionDialog() {
 
   // Check action permissions (create, edit, delete, view)
   const checkActionPermission = (action, feature = null) => {
+    if (!authStore.user || !authStore.user.permissions) {
+      return false
+    }
+    
     const actionPermissions = {
       'create': 'canCreate',
       'edit': 'canEdit', 
@@ -77,9 +95,11 @@ export function usePermissionDialog() {
     }
     
     const permission = actionPermissions[action]
-    if (!permission) return true
+    if (!permission) {
+      return true
+    }
     
-    if (hasPermission(permission)) {
+    if (hasPermission(permission, authStore.user)) {
       return true
     }
 
@@ -111,6 +131,11 @@ export function usePermissionDialog() {
     router.go(-1)
   }
 
+  // Handle contact admin action
+  const handleContactAdmin = () => {
+    closePermissionDialog()
+  }
+
   return {
     showPermissionDialog,
     permissionDialogData,
@@ -119,6 +144,7 @@ export function usePermissionDialog() {
     checkPermissions,
     checkActionPermission,
     closePermissionDialog,
-    handleGoBack
+    handleGoBack,
+    handleContactAdmin
   }
 } 

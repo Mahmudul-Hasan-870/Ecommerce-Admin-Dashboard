@@ -5,13 +5,5 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { useCurrencyStore } from './stores/currency'
-
-const currencyStore = useCurrencyStore()
-
-onMounted(async () => {
-  // Initialize currency when app starts
-  await currencyStore.initCurrency()
-})
+// Removed currency store initialization to prevent infinite loops
 </script> 

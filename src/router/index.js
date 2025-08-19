@@ -83,7 +83,7 @@ router.beforeEach(async (to, from, next) => {
     next('/login')
   } else if (to.meta.requiresGuest && authStore.isAuthenticated) {
     next('/')
-  } else if (to.meta.permission && !canAccess(to.meta.permission)) {
+  } else if (to.meta.permission && !canAccess(to.meta.permission, authStore.user)) {
     // User doesn't have permission, redirect to dashboard
     next('/')
   } else {

@@ -278,9 +278,9 @@ const logout = async () => {
 }
 
 const checkNavigationPermission = (item) => {
-  if (item.permission) {
-    checkPermission(item.permission, `access ${item.name.toLowerCase()}`)
-  }
+  // Remove permission check for navigation items since admin should have access to all
+  // The router guard already handles permission checking
+  return true
 }
 
 // Auto-refresh notifications every 30 seconds
